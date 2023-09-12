@@ -26,7 +26,7 @@ User parameters (defined just above) must be defined in a Yaml file. This file m
 Example of a Yaml file `parameters.yml`:
 
 ```yaml
-user:
+api_enedis:
   access_token: "yyyy"
   usage_point_id: "xxxx"
 ```

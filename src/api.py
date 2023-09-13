@@ -254,8 +254,7 @@ def get_my_data_from_enedis_api(
 
     #  handle endpoint cases 
     if not endpoint.lower() in AUTHORIZED_ENDPOINTS:
-        print(f"ERROR: The specified endpoint does not exist. Authorized endpoint : {AUTHORIZED_ENDPOINTS}")
-        return  None
+        raise ValueError(f"The specified endpoint does not exist. Authorized endpoint : {AUTHORIZED_ENDPOINTS}")
 
     if endpoint.lower() == "consumption_load_curve":
         response = _get_raw_load_curve(api_tokens,

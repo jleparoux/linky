@@ -1,9 +1,10 @@
 import os
 import sys
-import yaml
-from pathlib import Path
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Dict
+
+import yaml
 
 PARAMETERS_PATH = os.path.dirname(os.path.abspath(__file__))
 PARAMETERS_FILEPATH = Path(PARAMETERS_PATH) / 'parameters.yml'
@@ -22,10 +23,10 @@ class Configuration:
 
         # read user yaml parameters
         try:
-            with open(self.yaml_file) as file:
-                settings = yaml.safe_load(file)
+            with open(self.yaml_file) as f:
+                settings = yaml.safe_load(f)
         except Exception as e:
-            print(e)
+            raise(e)
         else:
             self.settings = settings
 

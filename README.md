@@ -1,15 +1,17 @@
-# Linky
+# Welcome to Linky
+
+> A unified package for your own electrical data analysis from Linky meters
 
 This project provides an overview of your own electrical data from Linky meters (smart meters deployed nationwide in France by French power grid operator Enedis). This project is built with python and can be easily deployed on your own data.
 
-## How to install
+## :hourglass_flowing_sand: How to install
 
 Clone the repository and install dependencies by using poetry as following :
 ```
 poetry install
 ```
 
-## How to work with your own data ?
+## :zap: How to work with your own data ?
 
 Linky meter data is retrieved using the `MyElectricalData` API. This is a gateway to the official Enedis API (which is not accessible to private individuals without a SIRET number). 
 
@@ -33,4 +35,4 @@ api_enedis:
 
 ## How to use the Dashboard ?
 
-Coming soon ...
+:construction: Coming soon ...

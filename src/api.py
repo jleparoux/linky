@@ -132,7 +132,6 @@ def _get_raw_daily_data(
         print(f"   start date has been updated to : {start_date}")
 
     # call api 
-    response = {}
     print(f" >>  Endpoint : {endpoint}")
     print(f"   Load data from : {start_date} to {end}")
 
@@ -152,7 +151,7 @@ def _get_raw_daily_data(
 
     # append response
     if status_code == 200:
-        response[endpoint] = response_
+        response = response_
 
     return response
 
@@ -191,7 +190,7 @@ def _get_raw_load_curve(
         print(" WARNING: For load curve data, the delta between end date and start date must be less than 7 days per call.")
     
     # recursive call to api rolling 7days (by week)
-    response = {f"{endpoint}":[]}
+    response = []
     print(f" >>  Endpoint : {endpoint}")
 
     done = False
@@ -223,7 +222,7 @@ def _get_raw_load_curve(
 
         # append response
         if status_code == 200:
-            response[endpoint].append(response_)
+            response.append(response_)
 
         # update current_date
         current_date = last_begin_week_date - timedelta(days=1)
@@ -258,7 +257,7 @@ def get_my_data_from_enedis_api(
 
     if endpoint.lower() == "consumption_load_curve":
         response = _get_raw_load_curve(api_tokens,
-                                       endpoint,
+                                       endpoint.lower(),
                                        start,
                                        end,
                                        write_json=write_json,
@@ -267,7 +266,7 @@ def get_my_data_from_enedis_api(
     
     if endpoint.lower() == "daily_consumption":
         response = _get_raw_daily_data(api_tokens,
-                                       endpoint,
+                                       endpoint.lower(),
                                        start,
                                        end,
                                        write_json=write_json)
@@ -275,7 +274,7 @@ def get_my_data_from_enedis_api(
 
     if endpoint.lower() == "daily_consumption_max_power":
         response = _get_raw_daily_data(api_tokens,
-                                       endpoint,
+                                       endpoint.lower(),
                                        start,
                                        end,
                                        write_json=write_json)

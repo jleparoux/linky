@@ -1,6 +1,6 @@
 # Linky
 
-This project provides an overview of your own electrical data from Linker meters (smart meters deployed nationwide in France by French power grid operator Enedis). This project is built with python and can be easily deployed on your own data.
+This project provides an overview of your own electrical data from Linky meters (smart meters deployed nationwide in France by French power grid operator Enedis). This project is built with python and can be easily deployed on your own data.
 
 ## How to install
 

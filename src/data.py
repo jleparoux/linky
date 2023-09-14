@@ -56,7 +56,7 @@ def transform_raw_data_into_ts_data(
     df['consumption'] = df['consumption'].astype('float64')
     # df.drop(['value'], axis=1, inplace=True)
 
-    # exlude columns
+    # exlude data from columns if needed
     df = df.loc[ : , ~df.columns.isin(exclude_data)]
 
     # sorting by date

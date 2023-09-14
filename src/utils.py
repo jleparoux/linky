@@ -48,7 +48,7 @@ def json_to_dataframe(
 
     if "date" in df.columns:
         df['date'] = pd.to_datetime(df['date'], format=date_format)
-        df = df.set_index('date', drop=True)
+        df = df.set_index('date') #, drop=True)
         df.index = df.index + pd.DateOffset(seconds=-1)
 
     return df

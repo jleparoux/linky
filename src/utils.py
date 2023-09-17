@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -28,7 +29,7 @@ def write_json_file(
 
 def json_to_dataframe(
     jsondata: dict,
-    date_format: str = '%Y-%m-%d %H:%M:%S'
+    date_format: str = "%Y-%m-%d %H:%M:%S"
 ) -> pd.DataFrame:
     '''
     Transorm json data to a pandas DataFrame
@@ -46,9 +47,14 @@ def json_to_dataframe(
 
     df = pd.DataFrame(jsondata)
 
+    # apply date as index
+    _date_format_with_time = "%Y-%m-%d %H:%M:%S"
     if "date" in df.columns:
         df['date'] = pd.to_datetime(df['date'], format=date_format)
         df = df.set_index('date') #, drop=True)
-        df.index = df.index + pd.DateOffset(seconds=-1)
+
+        # check date format
+        if date_format == _date_format_with_time:
+            df.index = df.index + pd.DateOffset(seconds=-1)
 
     return df
